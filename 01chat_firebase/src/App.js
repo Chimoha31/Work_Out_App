@@ -1,11 +1,11 @@
-import Login from './pages/Login';
+import Home from './pages/Home';
 import Resister from './pages/Resister';
 import './style.scss';
 
 const App = () => {
   return (
     <>
-    <Login />
+    <Home />
     </>
   )
 }
