@@ -1,10 +1,11 @@
-import Resister from './pages/Resister'
+import Login from './pages/Login';
+import Resister from './pages/Resister';
+import './style.scss';
 
 const App = () => {
   return (
     <>
-    <Resister />
-      App Test Errorの有無確認
+    <Login />
     </>
   )
 }
