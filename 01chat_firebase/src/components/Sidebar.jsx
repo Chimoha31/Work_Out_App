@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './Navbar';
 import Search from './Search';
+import Chats from './Chats';
 import '../style.scss';
 
 const Sidebar = () => {
@@ -8,6 +9,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <Navbar />
       <Search />
+      <Chats />
     </div>
   )
 }
