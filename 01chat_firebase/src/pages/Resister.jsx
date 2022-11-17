@@ -24,6 +24,8 @@ const Resister = () => {
         email,
         // password (*passwordはstoreしない)
       });
+      await setDoc(doc(db, "userChats", res.user.uid), {});
+      
     } catch (err) {
       setErr(true);
       console.log(err);
