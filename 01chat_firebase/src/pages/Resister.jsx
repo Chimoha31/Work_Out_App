@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import file_icon from "../img/file_icon.png";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db } from "../firebase/firebase";
 import { doc, setDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 const Resister = () => {
@@ -20,14 +20,19 @@ const Resister = () => {
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
       console.log(res.user);
+      //Update profile
+      await updateProfile(res.user, {
+        displayName,
+      });
+      //create user on firestore
       await setDoc(doc(db, "users", res.user.uid), {
         uid: res.user.uid,
         displayName,
         email,
-        // password (*passwordはstoreしない)
       });
+      //create empty user chats on firestore
       await setDoc(doc(db, "userChats", res.user.uid), {});
-      navigate("/")
+      navigate("/");
     } catch (err) {
       setErr(true);
       console.log(err);
@@ -51,7 +56,9 @@ const Resister = () => {
           <button>Resister</button>
           {err && <span>Something went wrong...</span>}
         </form>
-        <p>You already have an account? Login</p>
+        <p>
+          You already have an account?<Link to="/login">Login</Link>
+        </p>
       </div>
     </div>
   );
@@ -59,6 +66,9 @@ const Resister = () => {
 
 export default Resister;
 
+// **
+// Firebase Storageを写真保存に使った場合
+// **
 // const storageRef = ref(storage, displayName);
 // const uploadTask = uploadBytesResumable(storageRef, file);
 
