@@ -51,6 +51,7 @@ body {
 .notesSmall-title,
 .notesSmall-updated {
   padding: 10px;
+  font-weight: lighter;
 }
 
 .notesSmall-title {
@@ -59,6 +60,7 @@ body {
 
 .notesSmall-body {
   padding: 0 10px;
+  font-weight: lighter;
 }
 
 .notesSmall-updated {

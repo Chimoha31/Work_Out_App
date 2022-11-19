@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Memo App</title>
-</head>
-<body>
-  <div class="notes" id="app">
-    <!-- Sidebar作成 -->
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Memo App</title>
+  </head>
+  <body>
+    <div class="notes" id="app">
+      <!-- Sidebar作成 -->
+      <div class="notesSidebar">
+        <button class="notesAdd" type="button">Add note</button>
+        <div class="notesList">
+          <div class="notesList-item">
+            <div class="notesSmall-title">Study Javascript</div>
+            <div class="notesSmall-body">Learned if syntax</div>
+            <div class="notesSmall-updated">2022/11/20</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preview notes -->
+      <div class="notesPreview">
+        <input type="text" class="notesTitle" placeholder="Add Title" />
+        <textarea class="notesBody" placeholder="Add note here"></textarea>
+      </div>
+    </div>
+  </body>
 </html>
