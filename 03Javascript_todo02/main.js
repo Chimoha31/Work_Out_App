@@ -1,4 +1,5 @@
 import NotesApi from "./NotesApi.js";
+import NotesView from "./NotesView.js";
 
 // update and save
 // NotesApi.saveNote({
@@ -8,6 +9,14 @@ import NotesApi from "./NotesApi.js";
 // });
 
 // delete
-NotesApi.deleteNote(720366);
+// NotesApi.deleteNote(720366);
+
+// instance化
+const app = document.querySelector("#app");
+const view = new NotesView(app, {
+  onNoteSelect() {
+    console.log("Clicked!");
+  },
+});
 
 console.log(NotesApi.getAllNotes());
