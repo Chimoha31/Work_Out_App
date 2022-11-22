@@ -14,9 +14,19 @@ import NotesView from "./NotesView.js";
 // instance化
 const app = document.querySelector("#app");
 const view = new NotesView(app, {
-  onNoteSelect() {
-    console.log("Clicked!");
+  onNoteSelect(id) {
+    console.log(id, ":Clicked!");
+  },
+  onNoteAdd() {
+    console.log("Clicked!!!!!");
+  },
+  onNoteEdit(newTitle, newBody) {
+    console.log(newTitle);
+    console.log(newBody);
   },
 });
 
 console.log(NotesApi.getAllNotes());
+
+const notes = NotesApi.getAllNotes();
+view.updateNoteList(notes);
