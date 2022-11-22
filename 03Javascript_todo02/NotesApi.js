@@ -29,5 +29,10 @@ export default class NotesApi {
   }
 
   //③ Api to delete memo
-  static deleteNote() {}
+  static deleteNote(id) {
+    const notes = NotesApi.getAllNotes();
+    const deletedNote = notes.filter((note) => note.id !== id);
+
+    localStorage.setItem("notes", JSON.stringify(deletedNote));
+  }
 }
