@@ -7,9 +7,23 @@ export default class NotesApi {
 
   //① Api to save memo
   static saveNote(noteToSave) {
-    noteToSave.id = Math.floor(Math.random() * 1000000);
-    noteToSave.updated = new Date().toISOString();
-    notes.push(noteToSave);
+    const notes = NotesApi.getAllNotes();
+    const existingNote = notes.find((note) => note.id === noteToSave.id);
+
+    // 編集と更新
+    if (existingNote) {
+      existingNote.title = noteToSave.title;
+      existingNote.body = noteToSave.body;
+      existingNote.updated = new Date().toISOString();
+    } else {
+      // noteToSave.id = Math.floor(Math.random() * 1000000);
+      // noteToSave.updated = new Date().toISOString();
+      // notes.push(noteToSave);
+
+      noteToSave.id = noteToSave.id;
+      noteToSave.updated = new Date().toISOString();
+      notes.push(noteToSave);
+    }
 
     localStorage.setItem("notes", JSON.stringify(notes));
   }
