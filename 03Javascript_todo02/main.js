@@ -24,6 +24,9 @@ const view = new NotesView(app, {
     console.log(newTitle);
     console.log(newBody);
   },
+  onNoteDelete(id){
+    console.log(id, ": was deleted")
+  }
 });
 
 console.log(NotesApi.getAllNotes());

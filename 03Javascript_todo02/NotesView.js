@@ -77,11 +77,21 @@ export default class NotesView {
     }
 
     // Select a memo(one note)
-    notesListContainer.querySelectorAll('.notesList-item').forEach((noteListItem) => {
-      noteListItem.addEventListener("click", () => {
-        console.log(noteListItem.dataset)
-        this.onNoteSelect(noteListItem.dataset.noteId)
-      })
-    })
+    notesListContainer
+      .querySelectorAll(".notesList-item")
+      .forEach((noteListItem) => {
+        noteListItem.addEventListener("click", () => {
+          console.log(noteListItem.dataset);
+          this.onNoteSelect(noteListItem.dataset.noteId);
+        });
+
+        noteListItem.addEventListener("dblclick", () => {
+          const doDelete = confirm("Are you sure you delete this memo?");
+
+          if(doDelete) {
+            this.onNoteDelete(noteListItem.dataset.noteId)
+          }
+        });
+      });
   }
 }
